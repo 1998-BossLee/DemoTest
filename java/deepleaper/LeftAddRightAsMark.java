@@ -11,8 +11,8 @@ import java.util.List;
  * @author: liyangjin
  * @create: 2023-06-13 10:56
  * @Description: 左图和右图重叠，达到加水印效果
- * 两个文件夹下的同名图片一对一添加，尺寸不一致会报错并跳过
- *
+ * 1、无脑一对多
+ * 2、前缀相同一对多
  */
 public class LeftAddRightAsMark {
 
@@ -20,7 +20,10 @@ public class LeftAddRightAsMark {
     static String rightDirPath = "/Users/liyangjin/Desktop/0姣捷的图片/水印图-右图";
     static String targetDirPath = "/Users/liyangjin/Desktop/0姣捷的图片/水印图-target";
 
-
+    //这里是类型，需要手动填写
+    static int type = 2;
+    //前缀位数
+    static int prefixLen = 7;
 
     public static void main(String[] args) throws Exception {
         checkDirPath(leftDirPath);
@@ -34,6 +37,17 @@ public class LeftAddRightAsMark {
         for (String leftPicName : leftPicNames) {
             for (String rightPicName : rightPicNames) {
                 try {
+                    switch (type) {
+                        //无脑一对多
+                        case 1:
+                            break;
+                        //前缀相同一对多
+                        case 2:
+                            if (!leftPicName.substring(0, prefixLen).equals(rightPicName.substring(0, prefixLen))) {
+                                continue;
+                            }
+                            break;
+                    }
                     File leftFile = new File(leftDirPath + File.separator + leftPicName);
                     BufferedImage leftImage = ImageIO.read(leftFile);
                     File rightFile = new File(rightDirPath + File.separator + rightPicName);
