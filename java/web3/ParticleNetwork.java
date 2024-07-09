@@ -2,15 +2,13 @@ package web3;
 
 
 import java.awt.*;
-import java.awt.datatransfer.Clipboard;
-import java.awt.datatransfer.StringSelection;
 import java.awt.event.InputEvent;
 import java.awt.event.KeyEvent;
 import java.util.Date;
 import java.util.Random;
 
 /**
- * @author: liyangjin
+ * @author: yangjin
  * @create: 2024-05-16 19:03
  * @Description:
  */
@@ -18,87 +16,89 @@ public class ParticleNetwork {
 
     public static void main(String[] args) throws Exception {
         Robot robot = new Robot();
-        Random random = new Random();       int t = 0;
-        String amount = "0.000009";
-        while (++t<=44) {
-            // 1. 给出【send】点击坐标，点击
+        Random random = new Random();
+        String[] s = {"0.0000198", "0.00000199", "0.00009989", "0.0009898", "0.000098799", "0.000001", "0.00000111", "0.00000123"};
+        int t = 0;
+        //每次要转的币数量
+        String amount = "0.00000001";
+        while (++t<=47) {
+            // 1. 给出【send】点击坐标，点击2下
             moveToAndClick(robot, 1350, 499);
             robot.delay(500);
             robot.mousePress(InputEvent.BUTTON1_DOWN_MASK);
             robot.mouseRelease(InputEvent.BUTTON1_DOWN_MASK);
             Thread.sleep(1000);
-            // 2. 鼠标移动到 最近钱包地址里
-            moveToAndClick(robot, 1350, 470);
-            //pressDelete(robot);
-            robot.delay(1000);
-            //typeString(robot, "0x6393B782e36a6333787850A910db6b7Da70aeA86");
+
+            // 2. 鼠标移动到 【最近钱包地址】里，点击2下
+            moveToAndClick(robot, 1350, 475);
+            robot.delay(500);
             robot.mousePress(InputEvent.BUTTON1_DOWN_MASK);
             robot.mouseRelease(InputEvent.BUTTON1_DOWN_MASK);
             robot.delay(1000);
 
-            // 3. 鼠标移动到金额输入框坐标停留，点击，操作键盘输入0.00001，0.00009，0.000999这三个数的其中一个
-            moveToAndClick(robot, 1345, 570);
+            // 3. 鼠标移动到金额输入框坐标停留，点击，【Back】删除金额，重新输入金额
+            // moveToAndClick(robot, 1345, 670);
+            // moveToAndClick(robot, 1345, 670);
             robot.delay(500);
             robot.mousePress(InputEvent.BUTTON1_DOWN_MASK);
             robot.mouseRelease(InputEvent.BUTTON1_DOWN_MASK);
             robot.delay(500);
-            pressDelete(robot);
-            String[] s = {"0.0000198", "0.00000199", "0.00009989", "0.0009898", "0.000098799", "0.000001", "0.00000111", "0.00000123"};
-            //typeString(robot, s[random.nextInt(1000)%8]);
+            pressDelete(robot); //【Back】
+            //amount = s[random.nextInt(1000)%s.length];//打开之后从s里随机拿一个金额
             typeString(robot, amount);
             Thread.sleep(1000);
-            // 4. 鼠标移动到【send】输入框坐标，点击
+
+            // 4. 鼠标移动到下面【send】按钮，点击
             clickAt(robot, 1400, 900);
 
-            // 5. 停留5-10秒，再次点击
+            // 5. 停留10-15秒，再次点击
             robot.delay(randomDelay(10000, 15000));
             clickAt(robot, 1400, 900);
 
             // 6. 停留10-15秒，移动到【验证框】坐标，点击
-            robot.delay(randomDelay(7000, 12000));
+            robot.delay(randomDelay(10000, 15000));
             moveToAndClick(robot, 1400, 820);
             robot.delay(500);
             robot.mousePress(InputEvent.BUTTON1_DOWN_MASK);
             robot.mouseRelease(InputEvent.BUTTON1_DOWN_MASK);
 
-            // 7. 停留5-10秒，移动到【签名】按钮区域，随机点击
-            robot.delay(randomDelay(10000, 12000));
-            // moveToAndClick(robot, 1800, 610); //小狐狸
-            moveToAndClick(robot, 1800, 710); //okx
-
+            // 7. 停留10-15秒，移动到【签名】按钮区域，点击。不同钱包坐标有偏移
+            robot.delay(randomDelay(10000, 15000));
+             moveToAndClick(robot, 1800, 610); //小狐狸
+            //moveToAndClick(robot, 1800, 710); //okx
             robot.delay(500);
             robot.mousePress(InputEvent.BUTTON1_DOWN_MASK);
             robot.mouseRelease(InputEvent.BUTTON1_DOWN_MASK);
 
-            // 8. 停留5-10秒，移动到【X】按钮，随机点击，将页面关闭
+            // 8. 停留5-10秒，移动到【X】按钮，叉掉弹窗
             robot.delay(randomDelay(10000, 15000));
             moveToAndClick(robot, 1750, 690);
-//
-            robot.delay(randomDelay(5000, 20000));
+
+            // 9. 随机停留5-20妙，开始下一次循环
+            robot.delay(randomDelay(10000, 20000));
             System.out.println(t + " " + new Date());
-           // break;0.00000199
-            if (t ==110) {
-                amount="0.00000009";
-                Thread.sleep(2*60*1000);
-                closeWindow(robot, 1);
+
+            // 10、第一个号执行50次之后，切换转币数量用于下一个号，停留5分钟，关闭当前窗口。
+            if (t == 99) {
+                amount = "0.00000009";
+                //关闭当前窗口
+                closeWindow(robot, 42, 40);
+                Thread.sleep(5 * 60 * 1000);
             }
-            if (t ==220) {
-                Thread.sleep(3*60*1000);
-                closeWindow(robot, 1);
+            // 11. 第二个号也执行50次之后，
+            if (t == 100) {
+                amount = "0.00000008";
+                //关闭当前窗口
+                closeWindow(robot, 42, 40);
+                Thread.sleep(5 * 60 * 1000);
             }
 
         }
-        //closeWindow(robot, 1);
-//        Thread.sleep(10*60*1000);
-//        closeWindow(robot, 1);
-//        Thread.sleep(30*60*1000);
-//        closeWindow(robot, 1);
+        //closeWindow(robot, 42, 40);
     }
 
-    private static void closeWindow(Robot robot, int cnt) throws Exception{
-        while(cnt-->0) {
-            moveToAndClick(robot, 25, 40);
-        }
+    private static void closeWindow(Robot robot, int x, int y) throws Exception{
+        moveToAndClick(robot, 25, 40);
     }
 
     private static void clickAt(Robot robot, int x, int y) {

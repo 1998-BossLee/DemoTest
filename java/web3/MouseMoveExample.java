@@ -13,8 +13,8 @@ public class MouseMoveExample {
             Point currentPos = MouseInfo.getPointerInfo().getLocation();
 
             //1、数字 1345 570
-            int targetX = 1800, targetY = 710;
-            for (int i = 1; i <= 2; i++) {
+            int targetX = 40, targetY = 40;
+            for (int i = 1; i <= 1; i++) {
                 moveToAndClick(robot, targetX, targetY);
                 System.out.println("第" + i + "次对焦成功");
                 //            robot.delay(500);
