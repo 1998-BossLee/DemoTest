@@ -15,13 +15,15 @@ import java.util.Random;
 public class ParticleNetwork {
 
     public static void main(String[] args) throws Exception {
+        Thread.sleep(9000);
+
         Robot robot = new Robot();
         Random random = new Random();
         String[] s = {"0.0000198", "0.00000199", "0.00009989", "0.0009898", "0.000098799", "0.000001", "0.00000111", "0.00000123"};
         int t = 0;
         //每次要转的币数量
-        String amount = "0.00000001";
-        while (++t<=47) {
+        String amount = "0.00000444";
+        while (++t<43) {
             // 1. 给出【send】点击坐标，点击2下
             moveToAndClick(robot, 1350, 499);
             robot.delay(500);
@@ -37,8 +39,8 @@ public class ParticleNetwork {
             robot.delay(1000);
 
             // 3. 鼠标移动到金额输入框坐标停留，点击，【Back】删除金额，重新输入金额
-            // moveToAndClick(robot, 1345, 670);
-            // moveToAndClick(robot, 1345, 670);
+            //moveToAndClick(robot, 1345, 570);
+             moveToAndClick(robot, 1345, 670);
             robot.delay(500);
             robot.mousePress(InputEvent.BUTTON1_DOWN_MASK);
             robot.mouseRelease(InputEvent.BUTTON1_DOWN_MASK);
@@ -77,24 +79,27 @@ public class ParticleNetwork {
             // 9. 随机停留5-20妙，开始下一次循环
             robot.delay(randomDelay(10000, 20000));
             System.out.println(t + " " + new Date());
+           // Thread.sleep(100000);
 
             // 10、第一个号执行50次之后，切换转币数量用于下一个号，停留5分钟，关闭当前窗口。
-            if (t == 99) {
-                amount = "0.00000009";
+            if (t == 20) {
+                amount = "0.00000001";
                 //关闭当前窗口
                 closeWindow(robot, 42, 40);
                 Thread.sleep(5 * 60 * 1000);
             }
             // 11. 第二个号也执行50次之后，
-            if (t == 100) {
-                amount = "0.00000008";
+            if (t == 80) {
+                amount = "0.000008";
                 //关闭当前窗口
                 closeWindow(robot, 42, 40);
                 Thread.sleep(5 * 60 * 1000);
             }
 
         }
-        //closeWindow(robot, 42, 40);
+        closeWindow(robot, 42, 40);
+//        closeWindow(robot, 42, 40);
+//        closeWindow(robot, 42, 40);
     }
 
     private static void closeWindow(Robot robot, int x, int y) throws Exception{
