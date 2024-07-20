@@ -15,15 +15,15 @@ import java.util.Random;
 public class ParticleNetwork {
 
     public static void main(String[] args) throws Exception {
-        Thread.sleep(9000);
+        //Thread.sleep(9000);
 
         Robot robot = new Robot();
         Random random = new Random();
         String[] s = {"0.0000198", "0.00000199", "0.00009989", "0.0009898", "0.000098799", "0.000001", "0.00000111", "0.00000123"};
         int t = 0;
         //每次要转的币数量
-        String amount = "0.00000444";
-        while (++t<43) {
+        String amount = "0.0000001";
+        while (++t<22) {
             // 1. 给出【send】点击坐标，点击2下
             moveToAndClick(robot, 1350, 499);
             robot.delay(500);
@@ -82,7 +82,7 @@ public class ParticleNetwork {
            // Thread.sleep(100000);
 
             // 10、第一个号执行50次之后，切换转币数量用于下一个号，停留5分钟，关闭当前窗口。
-            if (t == 20) {
+            if (t == 25) {
                 amount = "0.00000001";
                 //关闭当前窗口
                 closeWindow(robot, 42, 40);

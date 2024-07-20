@@ -17,17 +17,17 @@ public class MacParticleNetwork {
         Robot robot = new Robot();
         Random random = new Random();
         int t = 0;
-        while (++t<=100) {
+        while (++t<=1) {
             // 1. 给出【send】点击坐标，点击
             moveToAndClick(robot, 3050, 800);
             robot.delay(500);
             robot.mousePress(InputEvent.BUTTON1_DOWN_MASK);
             robot.mouseRelease(InputEvent.BUTTON1_DOWN_MASK);
-            Thread.sleep(500);
+            Thread.sleep(50000);
             // 2. 鼠标移动到 最近钱包地址里
             moveToAndClick(robot, 3050, 800);
             //pressDelete(robot);
-            robot.delay(500);
+            robot.delay(5000);
             //typeString(robot, "0x6393B782e36a6333787850A910db6b7Da70aeA86");
             robot.mousePress(InputEvent.BUTTON1_DOWN_MASK);
             robot.mouseRelease(InputEvent.BUTTON1_DOWN_MASK);
@@ -35,7 +35,7 @@ public class MacParticleNetwork {
 
             // 3. 鼠标移动到金额输入框坐标停留，点击，操作键盘输入0.00001，0.00009，0.000999这三个数的其中一个
             moveToAndClick(robot, 3030, 870);
-            robot.delay(500);
+            robot.delay(5000);
             robot.mousePress(InputEvent.BUTTON1_DOWN_MASK);
             robot.mouseRelease(InputEvent.BUTTON1_DOWN_MASK);
             robot.delay(500);
