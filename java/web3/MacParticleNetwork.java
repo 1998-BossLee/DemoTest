@@ -17,7 +17,7 @@ public class MacParticleNetwork {
         Robot robot = new Robot();
         Random random = new Random();
         int t = 0;
-        while (++t<=1) {
+        while (++t<=1) {//
             // 1. 给出【send】点击坐标，点击
             moveToAndClick(robot, 3050, 650);
             robot.delay(500);
