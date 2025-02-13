@@ -19,23 +19,23 @@ public class MacParticleNetwork {
         int t = 0;
         while (++t<=1) {
             // 1. 给出【send】点击坐标，点击
-            moveToAndClick(robot, 3050, 800);
+            moveToAndClick(robot, 3050, 650);
             robot.delay(500);
             robot.mousePress(InputEvent.BUTTON1_DOWN_MASK);
             robot.mouseRelease(InputEvent.BUTTON1_DOWN_MASK);
-            Thread.sleep(50000);
+            Thread.sleep(500);
             // 2. 鼠标移动到 最近钱包地址里
-            moveToAndClick(robot, 3050, 800);
+            moveToAndClick(robot, 3050, 650);
             //pressDelete(robot);
-            robot.delay(5000);
+            robot.delay(500);
             //typeString(robot, "0x6393B782e36a6333787850A910db6b7Da70aeA86");
             robot.mousePress(InputEvent.BUTTON1_DOWN_MASK);
             robot.mouseRelease(InputEvent.BUTTON1_DOWN_MASK);
             robot.delay(100);
 
             // 3. 鼠标移动到金额输入框坐标停留，点击，操作键盘输入0.00001，0.00009，0.000999这三个数的其中一个
-            moveToAndClick(robot, 3030, 870);
-            robot.delay(5000);
+            moveToAndClick(robot, 3030, 800);
+            robot.delay(500);
             robot.mousePress(InputEvent.BUTTON1_DOWN_MASK);
             robot.mouseRelease(InputEvent.BUTTON1_DOWN_MASK);
             robot.delay(500);
@@ -45,29 +45,29 @@ public class MacParticleNetwork {
             typeString(robot, "0.0000001");
             Thread.sleep(100);
             // 4. 鼠标移动到【send】输入框坐标，点击
-            clickAt(robot, 3090, 1150);
+            clickAt(robot, 3090, 975);
 
             // 5. 停留5-10秒，再次点击
             robot.delay(randomDelay(7000, 10000));
-            clickAt(robot, 3090, 1150);
+            clickAt(robot, 3080, 975);
 
             // 6. 停留10-15秒，移动到【验证框】坐标，点击
             robot.delay(randomDelay(10000, 15000));
-            moveToAndClick(robot, 3090, 1070);
+            moveToAndClick(robot, 3080, 925);
             robot.delay(500);
             robot.mousePress(InputEvent.BUTTON1_DOWN_MASK);
             robot.mouseRelease(InputEvent.BUTTON1_DOWN_MASK);
 
             // 7. 停留5-10秒，移动到【签名】按钮区域，随机点击
             robot.delay(randomDelay(10000, 15000));
-            moveToAndClick(robot, 3300, 940);
+            moveToAndClick(robot, 3300, 850);
             robot.delay(500);
             robot.mousePress(InputEvent.BUTTON1_DOWN_MASK);
             robot.mouseRelease(InputEvent.BUTTON1_DOWN_MASK);
 
             // 8. 停留5-10秒，移动到【X】按钮，随机点击，将页面关闭
-            robot.delay(randomDelay(10000, 12000));
-            moveToAndClick(robot, 3360, 700);
+            robot.delay(randomDelay(10000, 15000));
+            moveToAndClick(robot, 3360, 800);
 
             robot.delay(randomDelay(1000, 10000));
             System.out.println(t + " " + new Date());

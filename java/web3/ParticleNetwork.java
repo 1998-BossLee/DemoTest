@@ -23,7 +23,7 @@ public class ParticleNetwork {
         int t = 0;
         //每次要转的币数量
         String amount = "0.0000001";
-        while (++t<22) {
+        while (++t<24) {
             // 1. 给出【send】点击坐标，点击2下
             moveToAndClick(robot, 1350, 499);
             robot.delay(500);
@@ -77,7 +77,7 @@ public class ParticleNetwork {
             moveToAndClick(robot, 1750, 690);
 
             // 9. 随机停留5-20妙，开始下一次循环
-            robot.delay(randomDelay(10000, 20000));
+            robot.delay(randomDelay(15000, 30000));
             System.out.println(t + " " + new Date());
            // Thread.sleep(100000);
 
