@@ -6,14 +6,13 @@ public class MoreGmail {
 
     public static void main(String[] args) {
         String email = "guanlaoshu1@gmail.com";
-        int plusVariationCount = 20; // 生成 5 个+裂变
 
-        List<String> emails = generateVariations(email, plusVariationCount);
+        List<String> emails = generateVariations(email);
         for (String s : emails) {
             System.out.println(s);
         }
     }
-    public static List<String> generateVariations(String email, int plusVariationCount) {
+    public static List<String> generateVariations(String email) {
         String localPart = email.split("@")[0];
         String domain = email.split("@")[1];
         // 大小写裂变
