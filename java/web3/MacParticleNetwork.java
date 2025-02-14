@@ -9,7 +9,7 @@ import java.util.Random;
 /**
  * @author: liyangjin
  * @create: 2024-05-20 15:52
- * @Description: 显示器维度
+ * @Description: 显示器维度 测试能不能传到github
  */
 public class MacParticleNetwork {
 
@@ -17,7 +17,7 @@ public class MacParticleNetwork {
         Robot robot = new Robot();
         Random random = new Random();
         int t = 0;
-        while (++t<=1) {//
+        while (++t<=1) {
             // 1. 给出【send】点击坐标，点击
             moveToAndClick(robot, 3050, 650);
             robot.delay(500);
