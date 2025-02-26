@@ -19,7 +19,7 @@ public class MoreGmail {
         return generateCaseVariations(localPart, domain);
     }
 
-    // 生成大小写裂变
+    // 生成大小写裂变 1
     private static List<String> generateCaseVariations(String localPart, String domain) {
         Set<String> caseVariations = new HashSet<>();
         char[] chars = localPart.toCharArray();
