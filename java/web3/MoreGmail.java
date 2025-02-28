@@ -5,7 +5,7 @@ import java.util.*;
 public class MoreGmail {
 
     public static void main(String[] args) {
-        String email = "guanfhaiuslao@gmail.com";
+        String email = "guanfhaiusl12ao@gmail.com";
 
         List<String> emails = generateVariations(email);
         for (String s : emails) {
