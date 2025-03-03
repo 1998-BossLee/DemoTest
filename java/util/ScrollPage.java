@@ -1,8 +1,6 @@
-package web3;
+package util;
 
 import java.awt.Robot;
-import java.awt.event.InputEvent;
-import java.awt.event.KeyEvent;
 
 public class ScrollPage {
     public static void main(String[] args) {
