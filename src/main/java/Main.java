@@ -22,7 +22,10 @@ public class Main {
 
 
     public static void main(String[] args) throws Exception {
-
+        //base64加密
+        String s = "dl_ocpx_id=1005&traceId=101111e6-4e64-4064-9cf2-29164382c801&dspGroupId=2000&accountId=qianxun&qianxunGroupId=1&qianxunPlanId=2&oaid=3f3c1801-6fa2-49be-a860-41689066250d&platform=2";
+        String s1 = Base64.getEncoder().encodeToString(s.getBytes());
+        System.out.println(s1);
 
     }
 
